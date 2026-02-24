@@ -59,6 +59,12 @@ public:
  */
 namespace NetMsgType {
 /**
+ * The signetpsbt message transports a PSBT with taproot fields to collect signatures
+ * required to satisfy the signet challenge multisig. A serialized block template whose 
+ * block_data as specified in BIP 325 matches the commitment in the PSBT.
+ */
+inline constexpr const char* SIGNETPSBT{"signetpsbt"};
+/**
  * The version message provides information about the transmitting node to the
  * receiving node at the beginning of a connection.
  */
@@ -268,6 +274,7 @@ inline constexpr const char* SENDTXRCNCL{"sendtxrcncl"};
 
 /** All known message types (see above). Keep this in the same order as the list of messages above. */
 inline const std::array ALL_NET_MESSAGE_TYPES{std::to_array<std::string>({
+    NetMsgType::SIGNETPSBT,
     NetMsgType::VERSION,
     NetMsgType::VERACK,
     NetMsgType::ADDR,
